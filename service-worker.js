@@ -22,7 +22,7 @@ const FILES = [
   "Chants_Basques_acc/Agure_Zaharra.pdf",
   "Chants_Basques_acc/Agur_Jaunak.pdf",
   "Chants_Basques_acc/Aita_Semeak.pdf",
-  "Chants_Basques_acc/Aitortren_Hizkuntz_Zaharra.pdf",
+  "Chants_Basques_acc/Aitorren_Hizkuntz_Zaharra.pdf",
   "Chants_Basques_acc/Ama_Lurraren_Oihua.pdf",
   "Chants_Basques_acc/Amets_bat_ote_da.pdf",
   "Chants_Basques_acc/Andre_Madalen.pdf",

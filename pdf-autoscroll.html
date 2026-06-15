@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ABENTURAZ ABENTURA</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+}
+
+#toolbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  background:white;
+  padding:10px;
+  border-bottom:1px solid #ccc;
+  z-index:1000;
+}
+
+#viewer{
+  margin-top:60px;
+}
+
+button{
+  padding:8px 12px;
+  margin-right:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="toolbar">
+  <button onclick="startScroll()">▶ Démarrer</button>
+  <button onclick="stopScroll()">⏸ Pause</button>
+</div>
+
+<div id="viewer">
+
+  <embed
+    src="Chants_Basques_pdf/ABENTURAZ_ABENTURA.pdf"
+    type="application/pdf"
+    width="100%"
+    height="3000px">
+
+</div>
+
+<script>
+let timer = null;
+
+function startScroll() {
+
+  stopScroll();
+
+  timer = setInterval(() => {
+    window.scrollBy(0, 1);
+  }, 50);
+}
+
+function stopScroll() {
+
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+}
+</script>
+
+</body>
+</html>

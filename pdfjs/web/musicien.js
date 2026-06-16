@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
 
   let timer = null;
-  let speed = 2;
+  let speed = 0.5;
 
   const panel = document.createElement("div");
 
@@ -23,13 +23,16 @@ window.addEventListener("load", () => {
 
   document.body.appendChild(panel);
 
-  document.getElementById("slowBtn").onclick = () => speed = 0.2;
-  document.getElementById("medBtn").onclick = () => speed = 0.5;
-  document.getElementById("fastBtn").onclick = () => speed = 1;
+  document.getElementById("slowBtn").onclick = () => speed = 0.1;
+  document.getElementById("medBtn").onclick = () => speed = 0.3;
+  document.getElementById("fastBtn").onclick = () => speed = 0.5;
 
-  document.getElementById("startBtn").onclick = () => {
+ document.getElementById("startBtn").onclick = () => {
 
-    if (timer) clearInterval(timer);
+  if (timer) clearInterval(timer);
+
+  // délai de 10 secondes
+  setTimeout(() => {
 
     timer = setInterval(() => {
 
@@ -40,8 +43,11 @@ window.addEventListener("load", () => {
         viewer.scrollTop += speed;
       }
 
-    }, 50);
-  };
+    }, 200);
+
+  }, 10000);
+
+};
 
   document.getElementById("stopBtn").onclick = () => {
 

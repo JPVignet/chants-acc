@@ -23,9 +23,9 @@ window.addEventListener("load", () => {
 
   document.body.appendChild(panel);
 
-  document.getElementById("slowBtn").onclick = () => speed = 0.5;
-  document.getElementById("medBtn").onclick = () => speed = 1.5;
-  document.getElementById("fastBtn").onclick = () => speed = 3;
+  document.getElementById("slowBtn").onclick = () => speed = 0.2;
+  document.getElementById("medBtn").onclick = () => speed = 0.5;
+  document.getElementById("fastBtn").onclick = () => speed = 1;
 
   document.getElementById("startBtn").onclick = () => {
 

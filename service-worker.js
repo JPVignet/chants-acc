@@ -1,4 +1,4 @@
-const CACHE_NAME = "chants-cache-v1";
+const CACHE_NAME = "chants-cache-v2";
 
 /**
  * ⚠️ LISTE COMPLETE DES FICHIERS A METTRE EN OFFLINE
@@ -319,6 +319,38 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
+
+  // musicien.js : toujours réseau d'abord
+  if (url.pathname.endsWith("/musicien.js")) {
+
+    event.respondWith(
+      (async () => {
+
+        const cache = await caches.open(CACHE_NAME);
+
+        try {
+
+          const response = await fetch(event.request);
+
+          if (response && response.ok) {
+            cache.put(event.request, response.clone());
+          }
+
+          return response;
+
+        } catch (e) {
+
+          return cache.match(event.request);
+
+        }
+
+      })()
+    );
+
+    return;
+  }
+
+
 
   // HTML : réseau d'abord
   if (

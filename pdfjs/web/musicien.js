@@ -1,3 +1,5 @@
+alert("MUSICIEN SEPTEMBRE");
+
 window.addEventListener("load", () => {
 
   let timer = null;

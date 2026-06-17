@@ -1,4 +1,3 @@
-alert("MUSICIEN SEPTEMBRE");
 
 window.addEventListener("load", () => {
 

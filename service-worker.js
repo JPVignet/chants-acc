@@ -70,7 +70,7 @@ const FILES = [
   "Chants_Basques_acc/Gazte_Naiz_Gazte.pdf",
   "Chants_Basques_acc/GEREZIEN_DENBORA.pdf",
   "Chants_Basques_acc/Gogoaren_Baitan.pdf",
-  "Chants_Basques_acc/GOIZEAN_GOIZ_JEIKIRIK.pdf",
+  "Chants_Basques_acc/Goizean_Goiz_Jeikirik.pdf",
   "Chants_Basques_acc/Goizian_Argi_Hastian.pdf",
   "Chants_Basques_acc/Gora_Ta_Gora_Beti.pdf",
   "Chants_Basques_acc/Greziako_Itsasontzia.pdf",

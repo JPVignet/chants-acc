@@ -1,12 +1,9 @@
-alert("MUSICIEN SEPTEMBRE");
-alert("avant load");
 
 window.addEventListener("load", () => {
 
-alert("dans load");
 
   let timer = null;
-  let speed = 10;
+  let speed = 1;
 
   const panel = document.createElement("div");
 
@@ -28,23 +25,20 @@ alert("dans load");
 
   document.body.appendChild(panel);
 
-  document.getElementById("slowBtn").onclick = () => speed = 0.3;
-  document.getElementById("medBtn").onclick = () => speed = 0.5;
-  document.getElementById("fastBtn").onclick = () => speed = 0.8;
+  document.getElementById("slowBtn").onclick = () => speed = 0.5;
+  document.getElementById("medBtn").onclick = () => speed = 1;
+  document.getElementById("fastBtn").onclick = () => speed = 2;
 
 document.getElementById("startBtn").onclick = () => {
 
-  alert("START");
 
   const viewer =
     document.getElementById("viewerContainer");
 
-  alert(viewer ? "viewer OK" : "viewer NULL");
-
 
   if (timer) clearInterval(timer);
 
-  // délai de 8 secondes
+  // délai de 5 secondes
   setTimeout(() => {
 
     timer = setInterval(() => {
@@ -58,7 +52,7 @@ document.getElementById("startBtn").onclick = () => {
 
     }, 200);
 
-  }, 8000);
+  }, 5000);
 
 };
 

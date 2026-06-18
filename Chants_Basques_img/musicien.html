@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="page">
+
+<script>
+
+const params = new URLSearchParams(location.search);
+const chant = params.get("chant");
+
+let page = 1;
+
+document.getElementById("page").src =
+  chant + "_1.jpg";
+
+document.addEventListener("keydown", function(e) {
+
+  if (e.key === "ArrowRight") {
+
+    page++;
+
+    document.getElementById("page").src =
+      chant + "_" + page + ".jpg";
+
+  }
+
+  if (e.key === "ArrowLeft" && page > 1) {
+
+    page--;
+
+    document.getElementById("page").src =
+      chant + "_" + page + ".jpg";
+
+  }
+
+});
+
+</script>
+</body>
+</html>

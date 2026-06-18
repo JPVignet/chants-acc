@@ -2,7 +2,7 @@
 window.addEventListener("load", () => {
 
   let timer = null;
-  let speed = 0.8;
+  let speed = 10;
 
   const panel = document.createElement("div");
 
@@ -28,7 +28,15 @@ window.addEventListener("load", () => {
   document.getElementById("medBtn").onclick = () => speed = 0.5;
   document.getElementById("fastBtn").onclick = () => speed = 0.8;
 
- document.getElementById("startBtn").onclick = () => {
+document.getElementById("startBtn").onclick = () => {
+
+  alert("START");
+
+  const viewer =
+    document.getElementById("viewerContainer");
+
+  alert(viewer ? "viewer OK" : "viewer NULL");
+
 
   if (timer) clearInterval(timer);
 

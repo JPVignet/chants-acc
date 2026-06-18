@@ -1,5 +1,9 @@
+alert("MUSICIEN SEPTEMBRE");
+alert("avant load");
 
 window.addEventListener("load", () => {
+
+alert("dans load");
 
   let timer = null;
   let speed = 10;

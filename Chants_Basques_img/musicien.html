@@ -1,8 +1,31 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+
+#toolbar{
+  position:fixed;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+#toolbar button{
+  font-size:40px;
+  margin:10px;
+  padding:10px 20px;
+}
+
+</style>
+
 <body>
 
 <img id="page">
+
+<div id="toolbar">
+  <button id="prev">◀</button>
+  <button id="next">▶</button>
+</div>
 
 <script>
 
@@ -13,6 +36,8 @@ let page = 1;
 
 document.getElementById("page").src =
   chant + "_1.jpg";
+
+/* clavier */
 
 document.addEventListener("keydown", function(e) {
 
@@ -36,6 +61,31 @@ document.addEventListener("keydown", function(e) {
 
 });
 
+/* boutons */
+
+document.getElementById("next").onclick = function() {
+
+  page++;
+
+  document.getElementById("page").src =
+    chant + "_" + page + ".jpg";
+
+};
+
+document.getElementById("prev").onclick = function() {
+
+  if (page > 1) {
+
+    page--;
+
+    document.getElementById("page").src =
+      chant + "_" + page + ".jpg";
+
+  }
+
+};
+
 </script>
+
 </body>
 </html>

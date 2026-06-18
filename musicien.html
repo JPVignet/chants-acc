@@ -48,8 +48,11 @@ document.addEventListener("keydown", function(e) {
 
     page++;
 
-    document.getElementById("page").src =
-      chant + "_" + page + ".jpg";
+document.getElementById("page").src =
+  dossier + "/" +
+  chant + "_" +
+  page + ".jpg";
+   
 
   }
 
@@ -57,8 +60,10 @@ document.addEventListener("keydown", function(e) {
 
     page--;
 
-    document.getElementById("page").src =
-      chant + "_" + page + ".jpg";
+document.getElementById("page").src =
+  dossier + "/" +
+  chant + "_" +
+  page + ".jpg";
 
   }
 
@@ -70,8 +75,10 @@ document.getElementById("next").onclick = function() {
 
   page++;
 
-  document.getElementById("page").src =
-    chant + "_" + page + ".jpg";
+document.getElementById("page").src =
+  dossier + "/" +
+  chant + "_" +
+  page + ".jpg";
 
 };
 
@@ -81,8 +88,10 @@ document.getElementById("prev").onclick = function() {
 
     page--;
 
-    document.getElementById("page").src =
-      chant + "_" + page + ".jpg";
+document.getElementById("page").src =
+  dossier + "/" +
+  chant + "_" +
+  page + ".jpg";
 
   }
 

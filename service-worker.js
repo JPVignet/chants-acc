@@ -1,4 +1,4 @@
-const CACHE_NAME = "chants-cache-v2";
+const CACHE_NAME = "chants-cache-v3";
 
 /**
  * ⚠️ LISTE COMPLETE DES FICHIERS A METTRE EN OFFLINE
@@ -9,6 +9,7 @@ const FILES = [
   "index.html",
   "style.css",
 
+  "Chants_Basques_img/index.html",
   "Chants_Basques_acc/index.html",
   "Chants_Gascons_acc/index.html",
   "Chants_Francophones_acc/index.html",
@@ -16,7 +17,8 @@ const FILES = [
   "Chants_Creoles_acc/index.html",
   "Chants_Corses_acc/index.html",
 
-
+  "Chants_Basques_img/ABENTURAZ_ABENTURA_1.img",
+  "Chants_Basques_img/ABENTURAZ_ABENTURA_2.img",
   "Chants_Basques_acc/ABENTURAZ_ABENTURA.pdf",
   "Chants_Basques_acc/Aberriaren_Mugak.pdf",
   "Chants_Basques_acc/Agure_Zaharra.pdf",
@@ -70,7 +72,7 @@ const FILES = [
   "Chants_Basques_acc/Gazte_Naiz_Gazte.pdf",
   "Chants_Basques_acc/GEREZIEN_DENBORA.pdf",
   "Chants_Basques_acc/Gogoaren_Baitan.pdf",
-  "Chants_Basques_acc/Goizean_Goiz_Jeikirik.pdf",
+  "Chants_Basques_acc/GOIZEAN_GOIZ_JEIKIRIK.pdf",
   "Chants_Basques_acc/Goizian_Argi_Hastian.pdf",
   "Chants_Basques_acc/Gora_Ta_Gora_Beti.pdf",
   "Chants_Basques_acc/Greziako_Itsasontzia.pdf",
@@ -319,38 +321,6 @@ self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
-
-  // musicien.js : toujours réseau d'abord
-  if (url.pathname.endsWith("/musicien.js")) {
-
-    event.respondWith(
-      (async () => {
-
-        const cache = await caches.open(CACHE_NAME);
-
-        try {
-
-          const response = await fetch(event.request);
-
-          if (response && response.ok) {
-            cache.put(event.request, response.clone());
-          }
-
-          return response;
-
-        } catch (e) {
-
-          return cache.match(event.request);
-
-        }
-
-      })()
-    );
-
-    return;
-  }
-
-
 
   // HTML : réseau d'abord
   if (

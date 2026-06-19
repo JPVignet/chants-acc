@@ -73,12 +73,19 @@ document.getElementById("page").src =
 
 document.getElementById("next").onclick = function() {
 
-  page++;
+  const test = new Image();
 
-document.getElementById("page").src =
-  dossier + "/" +
-  chant + "_" +
-  page + ".jpg";
+  test.onload = function() {
+
+    page++;
+
+    document.getElementById("page").src =
+      dossier + "/" + chant + "_" + page + ".jpg";
+
+  };
+
+  test.src =
+    dossier + "/" + chant + "_" + (page + 1) + ".jpg";
 
 };
 

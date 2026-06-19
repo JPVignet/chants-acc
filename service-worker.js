@@ -137,7 +137,7 @@ const FILES = [
   "Chants_Basques_acc/Olentzeroren_oparia.pdf",
   "Chants_Basques_acc/Parisen_Eta_Madrilen.pdf",
   "Chants_Basques_acc/Pena_Baiona.pdf",
-  "Chants_Basques_acc/"Pena_Baiona_(Euskara).pdf",
+  "Chants_Basques_acc/Pena_Baiona_(Euskara).pdf,
   "Chants_Basques_acc/Pilotarien_Biltzarra.pdf",
   "Chants_Basques_acc/Pottoka.pdf",
   "Chants_Basques_acc/Primaderako_Liliak.pdf",

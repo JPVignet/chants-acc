@@ -50,7 +50,7 @@ let page = 1;
 
 document.getElementById("page").src =
   dossier + "/" +
-  chant + "_" +
+  chant + "-" +
   page + ".jpg";
 
 /* clavier */
@@ -63,7 +63,7 @@ document.addEventListener("keydown", function(e) {
 
 document.getElementById("page").src =
   dossier + "/" +
-  chant + "_" +
+  chant + "-" +
   page + ".jpg";
    
 
@@ -75,7 +75,7 @@ document.getElementById("page").src =
 
 document.getElementById("page").src =
   dossier + "/" +
-  chant + "_" +
+  chant + "-" +
   page + ".jpg";
 
   }
@@ -93,12 +93,12 @@ document.getElementById("next").onclick = function() {
     page++;
 
     document.getElementById("page").src =
-      dossier + "/" + chant + "_" + page + ".jpg";
+      dossier + "/" + chant + "-" + page + ".jpg";
 
   };
 
   test.src =
-    dossier + "/" + chant + "_" + (page + 1) + ".jpg";
+    dossier + "/" + chant + "-" + (page + 1) + ".jpg";
 
 };
 
@@ -110,7 +110,7 @@ document.getElementById("prev").onclick = function() {
 
 document.getElementById("page").src =
   dossier + "/" +
-  chant + "_" +
+  chant + "-" +
   page + ".jpg";
 
   }

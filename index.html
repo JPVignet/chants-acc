@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chants Pintxoriak accords</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#ffffff">
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/android/pintxoriak-192x192.png">
+
+<style>
+body {
+    font-family:
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+a {
+    display: block;
+    padding: 14px;
+    background: white;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #222;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Chants Pintxoriak accords</h1>
+
+<div class="install-info">
+<!-- 📱 Pour installer l'application :
+ <br>
+ Menu Chrome ⋮ → Ajouter à l'écran d'accueil → Installer l'application -->
+
+ </div>
+
+<ul>
+<li><a href="Chants_Basques_img/index.html">Chants Basques img</a></li>
+<li><a href="Chants_Corses_img/index.html">Chants Corses</a></li>
+<li><a href="Chants_Creoles_img/index.html">Chants Creoles</a></li>
+<li><a href="Chants_Espagnols_img/index.html">Chants Espagnols</a></li>
+<li><a href="Chants_Francophones_img/index.html">Chants Francophones</a></li>
+<li><a href="Chants_Gascons_img/index.html">Chants Gascons</a></li>
+
+</ul>
+
+<div style="text-align:center; margin-top:40px;">
+
+  <button id="downloadBtn"
+          style="
+            padding:12px 20px;
+            font-size:16px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+          ">
+   Vérifier les chants disponibles hors connexion 
+
+ </button>
+
+<div style="width:100%; max-width:400px; margin:20px auto;">
+
+  <div style="background:#ddd; height:18px; border-radius:10px; overflow:hidden;">
+    <div id="bar" style="height:100%; width:0%; background:#2d6cdf;"></div>
+  </div>
+
+  <div id="progressText" style="text-align:center; margin-top:8px; font-size:14px;">
+  </div>
+
+</div>
+
+  <div id="status"
+       style="
+         margin-top:15px;
+         font-size:14px;
+         color:#444;
+       ">
+  </div>
+
+</div>
+
+
+<p style="font-size:10px;color:#888;text-align:center">
+Version du 22-06-2026
+</p>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js', {
+    updateViaCache: 'none'
+  }).then(reg => {
+    reg.update();
+
+    // 🔥 IMPORTANT : force l’activation immédiate du nouveau SW
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      window.location.reload();
+    });
+  });
+}
+</script>
+
+<script>
+document.getElementById("downloadBtn")
+  .addEventListener("click", async () => {
+
+    const status = document.getElementById("status");
+
+    try {
+
+      const keys = await caches.keys();
+
+      let chants = [];
+
+      for (const cacheName of keys) {
+        const cache = await caches.open(cacheName);
+        const requests = await cache.keys();
+
+        for (const req of requests) {
+          const url = req.url;
+
+          if (
+            url.includes("_img/") &&
+            url.endsWith("_1.jpg") &&
+            !url.includes("index.html")
+          ) {
+            chants.push(url);
+          }
+        }
+      }
+
+      const unique = [...new Set(chants)];
+
+      const total = 220;
+
+      status.textContent =
+        `${unique.length} / ${total} chants disponibles hors connexion`;
+
+    } catch (e) {
+      console.error(e);
+      status.textContent = "Erreur lecture cache";
+    }
+
+  });
+
+</script>
+
+
+</body>
+</html>

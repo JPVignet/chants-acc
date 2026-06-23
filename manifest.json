@@ -4,7 +4,7 @@
   "short_name": "Chants Pintxoriak",
   "start_url": "/chants-acc/index.html",
   "scope": "/chants-acc/",
-  "display": "standalone",
+  "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "icons": [

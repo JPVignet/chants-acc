@@ -7,6 +7,8 @@ const CACHE_NAME = "chants-cache-v3";
 const FILES = [
   "./",
   "index.html",
+  "musicien.html",
+  "manifest.json",
   "style.css",
 
   "Chants_Basques_img/index.html",

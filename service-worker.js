@@ -411,7 +411,7 @@ self.addEventListener("fetch", event => {
   // HTML : réseau d'abord
  if (
   event.request.mode === "navigate" ||
-  url.pathname.endsWith(".html") ||
+  url.pathname.endsWith(".html")
 )
   {
 
@@ -442,6 +442,33 @@ self.addEventListener("fetch", event => {
     return;
   }
 
+// JPG : cache d'abord
+if (url.pathname.endsWith(".jpg")) {
+
+  event.respondWith(
+    (async () => {
+
+      const cache = await caches.open(CACHE_NAME);
+
+      const cached = await cache.match(event.request);
+
+      if (cached) {
+        return cached;
+      }
+
+      const response = await fetch(event.request);
+
+      if (response && response.ok) {
+        cache.put(event.request, response.clone());
+      }
+
+      return response;
+
+    })()
+  );
+
+  return;
+}
 
   // CSS, images, manifest, etc. : cache d'abord
   event.respondWith(

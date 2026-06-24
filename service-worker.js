@@ -409,42 +409,12 @@ self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
 
   // HTML : réseau d'abord
- if (
+
+if (
   event.request.mode === "navigate" ||
   url.pathname.endsWith(".html")
 )
-  {
-
-    event.respondWith(
-      (async () => {
-
-        const cache = await caches.open(CACHE_NAME);
-
-        try {
-
-          const response = await fetch(event.request);
-
-          if (response && response.ok) {
-            cache.put(event.request, response.clone());
-          }
-
-          return response;
-
-        } catch (e) {
-
-          return cache.match(event.request);
-
-        }
-
-      })()
-    );
-
-    return;
-  }
-
-// JPG : cache d'abord
-if (url.pathname.endsWith(".jpg")) {
-
+{
   event.respondWith(
     (async () => {
 
@@ -456,13 +426,7 @@ if (url.pathname.endsWith(".jpg")) {
         return cached;
       }
 
-      const response = await fetch(event.request);
-
-      if (response && response.ok) {
-        cache.put(event.request, response.clone());
-      }
-
-      return response;
+      return fetch(event.request);
 
     })()
   );

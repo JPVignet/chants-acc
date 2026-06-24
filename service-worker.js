@@ -404,11 +404,8 @@ self.addEventListener("activate", event => {
  */
 self.addEventListener("fetch", event => {
 
-  if (event.request.method !== "GET") return;
-
-  const url = new URL(event.request.url);
-
-  // HTML : réseau d'abord
+console.log("REQUEST =", event.request.url);
+console.log("PATH =", url.pathname);
 
 if (
   event.request.mode === "navigate" ||
@@ -420,7 +417,8 @@ if (
 
       const cache = await caches.open(CACHE_NAME);
 
-      const cached = await cache.match(event.request);
+      // chercher uniquement le fichier html
+      const cached = await cache.match(url.pathname);
 
       if (cached) {
         return cached;
@@ -433,7 +431,6 @@ if (
 
   return;
 }
-
   // CSS, images, manifest, etc. : cache d'abord
   event.respondWith(
     (async () => {

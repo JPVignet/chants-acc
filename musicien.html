@@ -47,28 +47,11 @@ const chant = params.get("chant");
 
 let page = 1;
 
-let url =
+document.getElementById("page").src =
   dossier + "/" +
   chant + "-" +
   page + ".jpg";
 
-console.log("IMAGE =", url);
-
-document.getElementById("page").src = url;
-
-caches.open(CACHE_NAME).then(cache => {
-
-  cache.match(url).then(response => {
-
-    console.log(
-      "CACHE",
-      url,
-      response ? "TROUVE" : "ABSENT"
-    );
-
-  });
-
-});
 
 /* clavier */
 

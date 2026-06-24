@@ -404,6 +404,8 @@ self.addEventListener("activate", event => {
  */
 self.addEventListener("fetch", event => {
 
+ const url = new URL(event.request.url);
+
 console.log("REQUEST =", event.request.url);
 console.log("PATH =", url.pathname);
 

@@ -409,15 +409,11 @@ self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
 
   // HTML : réseau d'abord
-  if (
-    event.request.mode === "navigate" ||
-    url.pathname.endsWith(".html")
-  ) 
-
-  or (
-    event.request.mode === "navigate" ||
-    url.pathname.endsWith(".jpg")
-  ) 
+ if (
+  event.request.mode === "navigate" ||
+  url.pathname.endsWith(".html") ||
+  url.pathname.endsWith(".jpg")
+)
   {
 
     event.respondWith(

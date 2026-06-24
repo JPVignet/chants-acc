@@ -203,7 +203,7 @@ const FILES = [
   "Chants_Basques_img/Zazpiak_Oihal_Batetik-2.jpg",
   "Chants_Basques_img/Zurekin_batera-1.jpg",
   "Chants_Basques_img/Zurekin_batera-2.jpg",
-  "Chants_Basques_img/index-1.jpg",
+  "Chants_Basques_img/index.html",
   "Chants_Basques_img/style.css",
   "Chants_Corses_img/COMPANERO-1.jpg",
   "Chants_Corses_img/VOLE-1.jpg",

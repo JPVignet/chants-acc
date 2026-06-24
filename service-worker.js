@@ -412,7 +412,13 @@ self.addEventListener("fetch", event => {
   if (
     event.request.mode === "navigate" ||
     url.pathname.endsWith(".html")
-  ) {
+  ) 
+
+  or (
+    event.request.mode === "navigate" ||
+    url.pathname.endsWith(".jpg")
+  ) 
+  {
 
     event.respondWith(
       (async () => {

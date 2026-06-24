@@ -6,7 +6,7 @@
 #toolbar{
   position:fixed;
   top:20px;
-  left:20px;
+  left:10px;
   z-index:9999;
 
  background:rgba(255,255,255,0.8);
@@ -47,10 +47,28 @@ const chant = params.get("chant");
 
 let page = 1;
 
-document.getElementById("page").src =
+let url =
   dossier + "/" +
   chant + "-" +
   page + ".jpg";
+
+console.log("IMAGE =", url);
+
+document.getElementById("page").src = url;
+
+caches.open(CACHE_NAME).then(cache => {
+
+  cache.match(url).then(response => {
+
+    console.log(
+      "CACHE",
+      url,
+      response ? "TROUVE" : "ABSENT"
+    );
+
+  });
+
+});
 
 /* clavier */
 

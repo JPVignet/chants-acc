@@ -41,6 +41,8 @@
 
 <script>
 
+alert("MUSICIEN VERSION 25 JUIN");
+
 const params = new URLSearchParams(location.search);
 const dossier = params.get("dossier");
 const chant = params.get("chant");
@@ -83,6 +85,12 @@ document.getElementById("page").src =
 });
 
 /* boutons */
+
+document.getElementById("next").onclick = function() {
+
+  alert("NEXT");
+
+};
 
 document.getElementById("next").onclick = function() {
 

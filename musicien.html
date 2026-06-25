@@ -86,22 +86,14 @@ document.getElementById("page").src =
 
 document.getElementById("next").onclick = function() {
 
-  const test = new Image();
+  page++;
 
-  test.onload = function() {
-
-    page++;
-
-    document.getElementById("page").src =
-      dossier + "/" + chant + "-" + page + ".jpg";
-
-  };
-
-  test.src =
-    dossier + "/" + chant + "-" + (page + 1) + ".jpg";
+  document.getElementById("page").src =
+    dossier + "/" +
+    chant + "-" +
+    page + ".jpg";
 
 };
-
 document.getElementById("prev").onclick = function() {
 
   if (page > 1) {

@@ -8,12 +8,10 @@
   top:20px;
   left:10px;
   z-index:9999;
-
- background:rgba(255,255,255,0.8);
+  background:rgba(255,255,255,0.8);
   border:1px solid black;
   border-radius:10px;
   padding:5px;
-
 }
 
 #toolbar button{
@@ -21,7 +19,6 @@
   margin:5px;
   padding:5px 10px;
 }
-
 
 #page{
   width:100%;
@@ -46,69 +43,82 @@ const dossier = params.get("dossier");
 const chant = params.get("chant");
 
 let page = 1;
+let nbPages = 1;
 
-document.getElementById("page").src =
-  dossier + "/" +
-  chant + "-" +
-  page + ".jpg";
+const image = document.getElementById("page");
 
+function afficherPage() {
+    image.src = `${dossier}/${chant}-${page}.jpg`;
+}
 
-/* clavier */
+// Comptage automatique des pages
+function compterPages() {
 
-document.addEventListener("keydown", function(e) {
+    let p = 1;
 
-  if (e.key === "ArrowRight") {
+    function tester() {
 
-    page++;
+        const img = new Image();
 
-document.getElementById("page").src =
-  dossier + "/" +
-  chant + "-" +
-  page + ".jpg";
-   
+        img.onload = function () {
+            nbPages = p;
+            p++;
+            tester();
+        };
 
-  }
+        img.onerror = function () {
+            console.log("Nombre de pages :", nbPages);
+        };
 
-  if (e.key === "ArrowLeft" && page > 1) {
+        img.src = `${dossier}/${chant}-${p}.jpg`;
+    }
 
-    page--;
+    tester();
+}
 
-document.getElementById("page").src =
-  dossier + "/" +
-  chant + "-" +
-  page + ".jpg";
+function pageSuivante() {
+    if (page < nbPages) {
+        page++;
+        afficherPage();
+    }
+}
 
-  }
+function pagePrecedente() {
+    if (page > 1) {
+        page--;
+        afficherPage();
+    }
+}
+
+// Première page
+afficherPage();
+
+// Recherche du nombre total de pages
+compterPages();
+
+document.addEventListener("keydown", function(e){
+
+    switch(e.key){
+
+        case "ArrowRight":
+        case "PageDown":
+        case " ":
+        case "Enter":
+            pageSuivante();
+            e.preventDefault();
+            break;
+
+        case "ArrowLeft":
+        case "PageUp":
+            pagePrecedente();
+            e.preventDefault();
+            break;
+    }
 
 });
 
-/* boutons */
-
-
-document.getElementById("next").onclick = function() {
-
-  page++;
-
-  document.getElementById("page").src =
-    dossier + "/" +
-    chant + "-" +
-    page + ".jpg";
-
-};
-document.getElementById("prev").onclick = function() {
-
-  if (page > 1) {
-
-    page--;
-
-document.getElementById("page").src =
-  dossier + "/" +
-  chant + "-" +
-  page + ".jpg";
-
-  }
-
-};
+document.getElementById("next").onclick = pageSuivante;
+document.getElementById("prev").onclick = pagePrecedente;
 
 </script>
 
